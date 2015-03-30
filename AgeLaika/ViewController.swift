@@ -29,8 +29,15 @@ class ViewController: UIViewController {
     
     @IBAction func convertToDogYearsButton(sender: UIButton) {
 
-        var humanYears = humanYearsTextField.text.toInt()!
-        var convertToDogYears = humanYears * 7
+        var humanYears = (humanYearsTextField.text as NSString).doubleValue
+        var convertToDogYears:Double
+        
+        if (humanYears > 2) {
+            convertToDogYears = ((humanYears - 2) * 4) + (2 * 10.5)
+        }
+        else {
+            convertToDogYears = humanYears * 10.5
+        }
         
         convertedDogYearsLabel.hidden = false
         convertedDogYearsLabel.text = "\(convertToDogYears)" + " Dog Years!"
